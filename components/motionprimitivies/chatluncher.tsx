@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useRef } from 'react'
-import { Square, ArrowUp } from 'lucide-react'
+import { Square, ArrowUp, Plus } from 'lucide-react'
 import { Magnetic } from '@/components/ui/magnetic'
 import {
   MorphingPopover,
@@ -17,6 +17,8 @@ import {
 } from '@/components/ui/prompt-input'
 import { ChatButton } from '@/components/motionprimitivies/chatbutton'
 import { Button } from '@/components/ui/button'
+import { ActionDock } from './actiondocker'
+import { testActions } from './testactions'
 
 export function ChatPopoverLauncher() {
   const [open, setOpen] = useState(false)
@@ -87,39 +89,39 @@ export function ChatPopoverLauncher() {
                      w-[min(100vw,400px)] origin-bottom-right
                      bg-transparent border-none shadow-none p-0"
         >
+          <ActionDock actions={testActions} />
           <div className="flex flex-col gap-3">
-
             <PromptInput
               value={input}
               onValueChange={setInput}
               isLoading={isLoading}
               onSubmit={handleSubmit}
-              maxHeight={180}
+              maxHeight={200}
               className="w-full overflow-hidden flex flex-row 
-              items-center gap-2 rounded-2xl p-3 pr-6"
+              items-center gap-2 rounded-2xl p-0 pr-1"
             >
               <PromptInputTextarea
                 placeholder="Ask me anything..."
                 className="
                 min-h-[20px] max-h-[200px] overflow-y-auto
                 text-base leading-6 placeholder:text-zinc-400
-                scrollbar-hidden text-sm pl-3
+                scrollbar-hidden text-xs
               " 
               />
-              <PromptInputActions className="absolute bottom-3 right-4 p-0 m-0">
+              <PromptInputActions className="absolute bottom-2 right-2 p-0 m-0">
                 <PromptInputAction
                   tooltip={isLoading ? 'Stop generation' : 'Send message'}
                 >
                   <Button
                     variant="default"
                     size="icon"
-                    className="h-8 w-8 rounded-full"
+                    className="h-5 w-5 rounded-full"
                     onClick={handleSubmit}
                   >
                     {isLoading ? (
-                      <Square className="size-5 fill-current" />
+                      <Square className="size-3 fill-current" />
                     ) : (
-                      <ArrowUp className="size-5" />
+                      <ArrowUp className="size-3" />
                     )}
                   </Button>
                 </PromptInputAction>
