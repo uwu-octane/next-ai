@@ -12,6 +12,7 @@ import { cn } from '@/lib/utils'
 import { ChevronDown } from 'lucide-react'
 import { Plus } from 'lucide-react'
 import styles from './chatbox.module.scss'
+import { Magnetic } from '../ui/magnetic'
 
 export type DropdownItem = {
   id: string
@@ -59,7 +60,9 @@ export function ChatDropdown({
           <span className="truncate max-w-[14rem] text-xs px-1.5 text-zinc-800 dark:text-zinc-200">
             {label}
           </span>
-          <ChevronDown className="size-3 opacity-70" />
+          <Magnetic intensity={0.08} range={120} springOptions={{ bounce: 0.12 }}>
+            <ChevronDown className="size-3 opacity-70" />
+          </Magnetic>
         </button>
       </DropdownMenuTrigger>
 
